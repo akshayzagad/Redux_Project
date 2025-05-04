@@ -23,7 +23,7 @@ const initialStateCustomer = {
     }
   }
   
-  export function ceatecustomer(fullName, nationalId) {
+  export function createCustomer(fullName, nationalId) {
     return {
       type: "customer/createCustomer",
       payload: { fullName, nationalId, createdAt: new Date().toISOString() },
