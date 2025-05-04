@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deposite, payLoan, requestLoan, withdraw } from "./accountSlice";
+import { deposit, payLoan, requestLoan, withdraw } from "./accountSlice";
 
 function AccountOperations() {
   const [depositAmount, setDepositAmount] = useState("");
@@ -14,14 +14,14 @@ function AccountOperations() {
   const {
     balance,
     loan: currentLoan,
-    loanPurpose: currentLoanPurpose,
+    loanPurpose : currentLoanPurpose,
     isLoading,
   } = useSelector((store) => store.account);
   // console.log(balance,currentLoan,currentLoanPurpose);
 
   function handleDeposit() {
     if (!depositAmount) return;
-    dispatch(deposite(depositAmount, currency));
+    dispatch(deposit(depositAmount, currency));
     setDepositAmount("");
     setCurrency("USD")
   }
@@ -98,7 +98,7 @@ function AccountOperations() {
         {currentLoan > 0 && (
           <div>
             <span>
-              Pay back ${currentLoan} ({currentLoanPurpose})
+              Pay back ${currentLoan} {currentLoanPurpose ? `(${currentLoanPurpose})` : ""}
             </span>
             <button onClick={handlePayLoan}>Pay loan</button>
           </div>
